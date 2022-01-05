@@ -49,11 +49,8 @@ def test():
 
   return instances()
 
-if __name__ == "__main__":
-  tb = test()
-  tb.config_sim(trace=True)
-  tb.run_sim()
 
+def Main():
   CLK_IN_FREQ = 50E6
   CLK_OUT_FREQ = 1
 
@@ -70,3 +67,9 @@ if __name__ == "__main__":
   toVHDL.std_logic_ports = True
   toVHDL.directory = "vhdl_out/"
   toVHDL(inst, initial_value=True)
+
+if __name__ == "__main__":
+  tb = test()
+  tb.config_sim(trace=True)
+  tb.run_sim()
+  Main()

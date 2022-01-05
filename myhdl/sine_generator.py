@@ -1,12 +1,19 @@
 from myhdl import *
 import math
 from position_validator import Sine, Canvas
+import matplotlib.pyplot as plt
+import numpy as np
 
 @block
 def sine_generator(clk, clear, dout, n_samples=33):
 
   max_val = Sine.bottom - Sine.top
-  temp_samples = [int((max_val/2-2) + (max_val/2-2)*math.sin(2* math.pi / n_samples * i)) for i in range(n_samples)]
+  temp_samples = [int((max_val/2-1) + (max_val/2-2)*math.sin(2* math.pi / (n_samples-1) * i)) for i in range(n_samples)]
+  x_axis = np.linspace(0, n_samples - 1, n_samples)
+  y_axis = np.array(temp_samples)
+  plt.plot(x_axis, y_axis)
+  plt.grid()
+  plt.show()
   samples = tuple(temp_samples)
   counter = Signal(intbv(0, 0, n_samples))
 
@@ -29,7 +36,7 @@ def sine_generator(clk, clear, dout, n_samples=33):
 @block
 def tb_sine_gen(period, clk, clear, dout, samples):
 
-  inst = sine_generator(clk=clk, clear=clear, dout=dout)
+  inst = sine_generator(clk=clk, clear=clear, dout=dout, n_samples=samples)
 
   @instance
   def stimuli():
@@ -72,7 +79,7 @@ def Main():
 
 if __name__ == "__main__":
 
-  SAMPLES = Sine.right - Sine.left
+  SAMPLES = 100
 
   clk = Signal(bool(0))
   clear = Signal(bool(0))

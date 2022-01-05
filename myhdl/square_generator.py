@@ -1,11 +1,13 @@
 from myhdl import *
 import math
 from position_validator import Square, Canvas
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 def get_sample_tuple(n_samples, max_val=Square.bottom - Square.top - 2):
   temp_samples = []
-  a = 4 * max_val / n_samples
+  a = 4 * max_val / (n_samples-1)
   for i in range(n_samples):
     if i <= n_samples/4:
       temp_samples.append(int(i*a))
@@ -20,6 +22,11 @@ def get_sample_tuple(n_samples, max_val=Square.bottom - Square.top - 2):
 def square_generator(clk, clear, dout, n_samples=33):
 
   samples = get_sample_tuple(n_samples)
+  x_axis = np.linspace(0, n_samples - 1, n_samples)
+  y_axis = np.array(samples)
+  plt.plot(x_axis, y_axis)
+  plt.grid()
+  plt.show()
   counter = Signal(intbv(0, 0, n_samples))
 
   @always(clk.posedge)

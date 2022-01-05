@@ -1,5 +1,7 @@
 from myhdl import *
 
+class ObjectRatio:
+  ratio = 8
 
 class Canvas:
   width = int(80)
@@ -8,20 +10,20 @@ class Canvas:
 class Square:
   left = int(0)
   right = int(80/3 - 1)
-  top = int(60/3)
-  bottom = int(2*60/3)
+  top = int(60/ObjectRatio.ratio)
+  bottom = int(60-60/ObjectRatio.ratio)
 
 class Triangle:
   left = int(80/3)
   right = int(2*80/3) -1
-  top = int(60/3)
-  bottom = int(2*60/3)
+  top = int(60/ObjectRatio.ratio)
+  bottom = int(60-60/ObjectRatio.ratio)
 
 class Sine:
   left = int(2*80/3)
   right = int(79)
-  top = int(60/3)
-  bottom = int(2*60/3)
+  top = int(60/ObjectRatio.ratio)
+  bottom = int(60-60/ObjectRatio.ratio)
 
 @block
 def position_validator(x_pos, sq, sine, tri):

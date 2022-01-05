@@ -1,10 +1,12 @@
 from myhdl import *
 import math
 from position_validator import Triangle, Canvas
+import matplotlib.pyplot as plt
+import numpy as np
 
 def get_sample_tuple(n_samples, max_val=Triangle.bottom - Triangle.top - 2):
   temp_samples = []
-  a = 2 * max_val / n_samples
+  a = 2 * max_val / (n_samples-1)
   for i in range(n_samples):
     if i <= n_samples/2:
       temp_samples.append(int(i*a))
@@ -17,6 +19,11 @@ def get_sample_tuple(n_samples, max_val=Triangle.bottom - Triangle.top - 2):
 def triangle_generator(clk, clear, dout, n_samples=33):
 
   samples = get_sample_tuple(n_samples)
+  x_axis = np.linspace(0, n_samples - 1, n_samples)
+  y_axis = np.array(samples)
+  plt.plot(x_axis, y_axis)
+  plt.grid()
+  plt.show()
   counter = Signal(intbv(0, 0, n_samples))
 
   @always(clk.posedge)
