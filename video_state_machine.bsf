@@ -1,0 +1,191 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 16 16 368 256)
+	(text "video_state_machine" (rect 5 0 89 12)(font "Arial" ))
+	(text "inst" (rect 8 224 20 236)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "timing_pins_clk" (rect 0 0 60 12)(font "Arial" ))
+		(text "timing_pins_clk" (rect 21 27 81 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 1))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "timing_pins_nrst" (rect 0 0 64 12)(font "Arial" ))
+		(text "timing_pins_nrst" (rect 21 43 85 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 1))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "int_inputs_drawn_outputs_sq_o" (rect 0 0 126 12)(font "Arial" ))
+		(text "int_inputs_drawn_outputs_sq_o" (rect 21 59 147 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 1))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "int_inputs_drawn_outputs_sin_o" (rect 0 0 127 12)(font "Arial" ))
+		(text "int_inputs_drawn_outputs_sin_o" (rect 21 75 148 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 1))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "int_inputs_drawn_outputs_tri_o" (rect 0 0 123 12)(font "Arial" ))
+		(text "int_inputs_drawn_outputs_tri_o" (rect 21 91 144 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "int_inputs_val_sq" (rect 0 0 69 12)(font "Arial" ))
+		(text "int_inputs_val_sq" (rect 21 107 90 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 1))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "int_inputs_val_tri" (rect 0 0 67 12)(font "Arial" ))
+		(text "int_inputs_val_tri" (rect 21 123 88 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 1))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "int_inputs_val_sin" (rect 0 0 70 12)(font "Arial" ))
+		(text "int_inputs_val_sin" (rect 21 139 91 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 1))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "int_inputs_x_count_top" (rect 0 0 92 12)(font "Arial" ))
+		(text "int_inputs_x_count_top" (rect 21 155 113 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160)(line_width 1))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "ext_inputs_triangle" (rect 0 0 73 12)(font "Arial" ))
+		(text "ext_inputs_triangle" (rect 21 171 94 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176)(line_width 1))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "ext_inputs_sine" (rect 0 0 61 12)(font "Arial" ))
+		(text "ext_inputs_sine" (rect 21 187 82 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 1))
+	)
+	(port
+		(pt 0 208)
+		(input)
+		(text "ext_inputs_square" (rect 0 0 73 12)(font "Arial" ))
+		(text "ext_inputs_square" (rect 21 203 94 215)(font "Arial" ))
+		(line (pt 0 208)(pt 16 208)(line_width 1))
+	)
+	(port
+		(pt 352 32)
+		(output)
+		(text "int_outputs_drawn_inputs_clr" (rect 0 0 115 12)(font "Arial" ))
+		(text "int_outputs_drawn_inputs_clr" (rect 216 27 331 39)(font "Arial" ))
+		(line (pt 352 32)(pt 336 32)(line_width 1))
+	)
+	(port
+		(pt 352 48)
+		(output)
+		(text "int_outputs_drawn_inputs_sq_t" (rect 0 0 123 12)(font "Arial" ))
+		(text "int_outputs_drawn_inputs_sq_t" (rect 208 43 331 55)(font "Arial" ))
+		(line (pt 352 48)(pt 336 48)(line_width 1))
+	)
+	(port
+		(pt 352 64)
+		(output)
+		(text "int_outputs_drawn_inputs_tri_t" (rect 0 0 121 12)(font "Arial" ))
+		(text "int_outputs_drawn_inputs_tri_t" (rect 210 59 331 71)(font "Arial" ))
+		(line (pt 352 64)(pt 336 64)(line_width 1))
+	)
+	(port
+		(pt 352 80)
+		(output)
+		(text "int_outputs_drawn_inputs_sin_t" (rect 0 0 125 12)(font "Arial" ))
+		(text "int_outputs_drawn_inputs_sin_t" (rect 206 75 331 87)(font "Arial" ))
+		(line (pt 352 80)(pt 336 80)(line_width 1))
+	)
+	(port
+		(pt 352 96)
+		(output)
+		(text "int_outputs_sel_output[1..0]" (rect 0 0 107 12)(font "Arial" ))
+		(text "int_outputs_sel_output[1..0]" (rect 224 91 331 103)(font "Arial" ))
+		(line (pt 352 96)(pt 336 96)(line_width 3))
+	)
+	(port
+		(pt 352 112)
+		(output)
+		(text "int_outputs_clr_x" (rect 0 0 68 12)(font "Arial" ))
+		(text "int_outputs_clr_x" (rect 263 107 331 119)(font "Arial" ))
+		(line (pt 352 112)(pt 336 112)(line_width 1))
+	)
+	(port
+		(pt 352 128)
+		(output)
+		(text "int_outputs_clr_sin" (rect 0 0 74 12)(font "Arial" ))
+		(text "int_outputs_clr_sin" (rect 257 123 331 135)(font "Arial" ))
+		(line (pt 352 128)(pt 336 128)(line_width 1))
+	)
+	(port
+		(pt 352 144)
+		(output)
+		(text "int_outputs_clr_tri" (rect 0 0 70 12)(font "Arial" ))
+		(text "int_outputs_clr_tri" (rect 261 139 331 151)(font "Arial" ))
+		(line (pt 352 144)(pt 336 144)(line_width 1))
+	)
+	(port
+		(pt 352 160)
+		(output)
+		(text "int_outputs_clr_sq" (rect 0 0 73 12)(font "Arial" ))
+		(text "int_outputs_clr_sq" (rect 258 155 331 167)(font "Arial" ))
+		(line (pt 352 160)(pt 336 160)(line_width 1))
+	)
+	(port
+		(pt 352 176)
+		(output)
+		(text "ext_outputs_pixel" (rect 0 0 68 12)(font "Arial" ))
+		(text "ext_outputs_pixel" (rect 263 171 331 183)(font "Arial" ))
+		(line (pt 352 176)(pt 336 176)(line_width 1))
+	)
+	(port
+		(pt 352 192)
+		(output)
+		(text "ext_outputs_we" (rect 0 0 62 12)(font "Arial" ))
+		(text "ext_outputs_we" (rect 269 187 331 199)(font "Arial" ))
+		(line (pt 352 192)(pt 336 192)(line_width 1))
+	)
+	(drawing
+		(rectangle (rect 16 16 336 224)(line_width 1))
+	)
+)
