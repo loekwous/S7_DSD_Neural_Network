@@ -14,8 +14,8 @@ class ExternalInputs:
 class InternalInputs():
     def __init__(self, drawn_outputs: DrawnOutputs = DrawnOutputs()):
         self.drawn_outputs = drawn_outputs
-        self.val_sq, self.val_tri, self.val_sin = [
-            Signal(bool(0)) for _ in range(3)]
+        self.ch_max, self.val_sq, self.val_tri, self.val_sin = [
+            Signal(bool(0)) for _ in range(4)]
         self.x_count_top = Signal(bool(0))
 
 
@@ -30,14 +30,14 @@ class InternalOutputs:
         self.drawn_inputs = drawn_inputs
         self.sel_output = Signal(intbv(0, 0, 3))
         self.clr_x = Signal(bool(0))
-        self.clr_sin, self.clr_tri, self.clr_sq = [
-            Signal(bool(0)) for _ in range(3)]
+        self.clr_sin, self.clr_tri, self.clr_sq, self.ch_en = [
+            Signal(bool(0)) for _ in range(4)]
 
 
 @block
 def video_state_machine(timing_pins: TimingPins, int_inputs: InternalInputs, ext_inputs: ExternalInputs, int_outputs: InternalOutputs, ext_outputs: ExternalOutputs):
     t_states = enum("SINIT", "IDLE", "SET_SINE", "RES_SINE",
-                    "SET_TRIANGLE", "RES_TRIANGLE", "SET_SQUARE", "RES_SQUARE")
+                    "SET_TRIANGLE", "RES_TRIANGLE", "SET_SQUARE", "RES_SQUARE", "NAME")
     t_functs = enum("FNONE", "FSINE", "FTRIANGLE", "FSQUARE")
 
     func = Signal(t_functs.FNONE)
@@ -75,6 +75,8 @@ def video_state_machine(timing_pins: TimingPins, int_inputs: InternalInputs, ext
     @always_comb
     def input_decoder():
         if p_s == t_states.SINIT:
+            n_s.next = t_states.NAME
+        elif p_s == t_states.NAME and int_inputs.ch_max == True:
             n_s.next = t_states.IDLE
         elif p_s == t_states.IDLE:
             if ext_inputs.sine == True and int_inputs.drawn_outputs.sin_o == False:
@@ -102,6 +104,13 @@ def video_state_machine(timing_pins: TimingPins, int_inputs: InternalInputs, ext
             p_s.next = t_states.SINIT
         else:
             p_s.next = n_s
+
+    @always_comb
+    def output_decoder_char():
+        if p_s == t_states.NAME:
+            int_outputs.ch_en.next = True
+        else:
+            int_outputs.ch_en.next = False
 
     @always_comb
     def output_decoder_pixel():

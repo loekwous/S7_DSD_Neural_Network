@@ -73,3 +73,4 @@ myhdl/vhdl_out/
 myhdl/temp/
 myhdl/__pycache__/
 simulation/modelsim/
+*.vcd
