@@ -69,7 +69,7 @@ _output_files/
 PLLJ_PLLSPE_INFO.txt
 
 # exclude some generated files
-myhdl/vhdl_out/
+
 myhdl/temp/
 myhdl/__pycache__/
 simulation/modelsim/
