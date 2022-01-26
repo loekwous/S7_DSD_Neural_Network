@@ -93,9 +93,9 @@ def tb_low_pass_filter():
 
   return instances()
 
-def Main():
+def convert():
   CUTOFF_FREQUENCY = 10E3
-  SAMPLE_FREQUENCY = 48E3
+  SAMPLE_FREQUENCY = 48.8E3
   GAIN = 1.0
 
   clk = Signal(False)
@@ -116,4 +116,4 @@ if __name__ == "__main__":
   tb.config_sim(trace=True)
   tb.run_sim()
 
-  Main()
+  convert()
