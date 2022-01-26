@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEMA5F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY top_level
+set_global_assignment -name TOP_LEVEL_ENTITY i2c_configurator
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:02:25  DECEMBER 01, 2021"
 set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
@@ -58,44 +58,59 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_location_assignment PIN_AF14 -to clk_50MHz
 set_location_assignment PIN_AA14 -to nrst
-set_location_assignment PIN_AA15 -to sine
-set_location_assignment PIN_W15 -to square
-set_location_assignment PIN_Y16 -to triangle
-set_location_assignment PIN_F10 -to vga_blank
-set_location_assignment PIN_A11 -to vga_clk
-set_location_assignment PIN_B11 -to vga_hs
-set_location_assignment PIN_C10 -to vga_sync
-set_location_assignment PIN_D11 -to vga_vs
-set_location_assignment PIN_A13 -to vga_r[0]
-set_location_assignment PIN_C13 -to vga_r[1]
-set_location_assignment PIN_E13 -to vga_r[2]
-set_location_assignment PIN_B12 -to vga_r[3]
-set_location_assignment PIN_C12 -to vga_r[4]
-set_location_assignment PIN_D12 -to vga_r[5]
-set_location_assignment PIN_E12 -to vga_r[6]
-set_location_assignment PIN_F13 -to vga_r[7]
-set_location_assignment PIN_J9 -to vga_g[0]
-set_location_assignment PIN_J10 -to vga_g[1]
-set_location_assignment PIN_H12 -to vga_g[2]
-set_location_assignment PIN_G10 -to vga_g[3]
-set_location_assignment PIN_G11 -to vga_g[4]
-set_location_assignment PIN_G12 -to vga_g[5]
-set_location_assignment PIN_F11 -to vga_g[6]
-set_location_assignment PIN_E11 -to vga_g[7]
-set_location_assignment PIN_B13 -to vga_b[0]
-set_location_assignment PIN_G13 -to vga_b[1]
-set_location_assignment PIN_H13 -to vga_b[2]
-set_location_assignment PIN_F14 -to vga_b[3]
-set_location_assignment PIN_H14 -to vga_b[4]
-set_location_assignment PIN_F15 -to vga_b[5]
-set_location_assignment PIN_G15 -to vga_b[6]
-set_location_assignment PIN_J14 -to vga_b[7]
 set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
-set_global_assignment -name NUM_PARALLEL_PROCESSORS 12
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+set_location_assignment PIN_J12 -to SCL
+set_location_assignment PIN_K12 -to SDA
+set_location_assignment PIN_Y18 -to success
+set_global_assignment -name PARTITION_NETLIST_TYPE POST_FIT -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_AD17 -to ready
+set_location_assignment PIN_AA15 -to start
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp2.stp
+set_location_assignment PIN_AC18 -to SDA_probe
+set_location_assignment PIN_Y17 -to SCL_probe
+set_location_assignment PIN_AK16 -to i2c_start
+set_location_assignment PIN_AK18 -to i2c_ready
+set_location_assignment PIN_AK19 -to start_button_probe
+set_location_assignment PIN_K8 -to adclrc
+set_location_assignment PIN_H7 -to bclk
+set_location_assignment PIN_AB12 -to enable_decoder
+set_location_assignment PIN_V16 -to led0
+set_location_assignment PIN_W16 -to led1
+set_location_assignment PIN_V17 -to led2
+set_location_assignment PIN_V18 -to led3
+set_location_assignment PIN_W17 -to led4
+set_location_assignment PIN_W19 -to led5
+set_location_assignment PIN_Y19 -to led6
+set_location_assignment PIN_W20 -to led7
+set_location_assignment PIN_W21 -to led8
+set_location_assignment PIN_Y21 -to led9
+set_location_assignment PIN_K7 -to adc_data
+set_location_assignment PIN_AJ19 -to i2s_data
+set_location_assignment PIN_AJ17 -to i2s_clk
+set_location_assignment PIN_AJ16 -to i2s_frame
+set_location_assignment PIN_G7 -to mclk
+set_location_assignment PIN_AE26 -to i2s_par_ready
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name QIP_FILE FFT_audio/synthesis/FFT_audio.qip
+set_global_assignment -name VHDL_FILE myhdl/vhdl_out/splitter.vhd
+set_global_assignment -name VHDL_FILE myhdl/vhdl_out/top_level_i2s.vhd
+set_global_assignment -name VHDL_FILE myhdl/vhdl_out/mclk_clock_divider.vhd
+set_global_assignment -name VHDL_FILE myhdl/vhdl_out/blk_clock_divider.vhd
+set_global_assignment -name VHDL_FILE vhdl/audio_decoder/audio_decoder_controller.vhd
+set_global_assignment -name VHDL_FILE myhdl/vhdl_out/audio_rectifier.vhd
+set_global_assignment -name VHDL_FILE vhdl/audio_decoder/sipo.vhd
+set_global_assignment -name VHDL_FILE vhdl/audio_decoder/counter.vhd
+set_global_assignment -name VHDL_FILE vhdl/audio_decoder/clockdevider.vhd
+set_global_assignment -name BDF_FILE vhdl/audio_decoder/audio_decoder.bdf
+set_global_assignment -name VHDL_FILE myhdl/vhdl_out/codec_top_level.vhd
+set_global_assignment -name VHDL_FILE myhdl/vhdl_out/top_level_i2c.vhd
+set_global_assignment -name VHDL_FILE myhdl/vhdl_out/layer.vhd
 set_global_assignment -name VHDL_FILE vhdl/video_controller/source_selector.vhd
 set_global_assignment -name VHDL_FILE vhdl/video_controller/character_writer.vhd
-set_global_assignment -name VHDL_FILE vhdl/low_pass_filter.vhd
-set_global_assignment -name VHDL_FILE vhdl/video_controller/clock_divider.vhd
 set_global_assignment -name VHDL_FILE vhdl/video_controller/video_mux.vhd
 set_global_assignment -name VHDL_FILE vhdl/video_controller/gen_offset.vhd
 set_global_assignment -name VHDL_FILE vhdl/video_controller/video_state_machine.vhd
@@ -108,7 +123,6 @@ set_global_assignment -name VHDL_FILE vhdl/video_controller/pck_myhdl_011.vhd
 set_global_assignment -name VHDL_FILE vhdl/video_controller/mod_counter.vhd
 set_global_assignment -name VHDL_FILE vhdl/video_controller/drawn_memory.vhd
 set_global_assignment -name BDF_FILE top_level.bdf
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name BDF_FILE i2c_configurator.bdf
+set_global_assignment -name SIGNALTAP_FILE output_files/stp2.stp
+set_global_assignment -name BDF_FILE FFT_diagram.bdf
